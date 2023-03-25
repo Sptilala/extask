@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table id="addData">
+
+
+    </table>
+    <script>
+
+        var data = $.getJSON("data.json", function (data) {
+            console.log(data);
+            var detail = '';
+            var detail1 = ''
+            $.each(data, function (key, value) {
+                detail += `<tr><td>SellerAddress:${value.SellerDetails.SellerAddress}</td></tr>
+                <tr><td>city,state,zip:${value.SellerDetails.City}${value.SellerDetails.State}${value.SellerDetails.Zip}</td></tr>
+                <tr><td>Phone:${value.SellerDetails.Phone}</td></tr>
+                <tr><td>Email:${value.SellerDetails.Email}</td></tr>
+                <tr><td>BILL TO:</td><td>SellerName:${value.SellerDetails.SellerName}</td></tr>
+                <tr><td>Company Name:${value.BuyerDetails.CompanyName}</td><td>INVOICE#</td></tr>
+                <tr><td>Name:${value.BuyerDetails.Name}</td><td>123456</td></tr>
+                <tr><td>Address:${value.BuyerDetails.Address}</td><td>DATE</td></tr>
+                <tr><td>city,state,zip:${value.BuyerDetails.City}${value.BuyerDetails.State}${value.BuyerDetails.Zip}</td></td><td>14/03/2022</td></tr>
+                <tr><td>Phone:${value.BuyerDetails.Phone}</td></td><td>INVOICE DUE DATE</td></tr>
+                <tr><td>Email:${value.BuyerDetails.Email}<td></td><td></td></td><td>14/03/2022</td></tr>
+                <tr></tr>
+               <tr> <th>ITEMS</th>
+                <th>Discription</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Tax</th>
+                <th>Amount</th></tr>
+                  <tr><td>${value.ItemDetails[].ItemName}</td>`
+            })
+            $("#addData").append(detail);
+        })
+    </script>
+</body>
+
+</html>
